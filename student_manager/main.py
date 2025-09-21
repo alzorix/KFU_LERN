@@ -4,15 +4,15 @@ from localization import MESSAGES
 students = {}
 
 
+# Добавить нового студента
 def add_student():
-    """Добавить нового студента."""
     try:
         name = input(MESSAGES["input_name"]).strip()
-        if name == "": #Если в поле ничего не ввели
+        if name == "":  # Если в поле ничего не ввели
             print(MESSAGES["student_not_found"])
             return
 
-        if name in students: #Студент уже существут
+        if name in students:  # Студент уже существует
             print(MESSAGES["student_exists"])
             return
 
@@ -32,8 +32,8 @@ def add_student():
         print(MESSAGES["unexpected_error"].format(error=error))
 
 
+# Показать всех студентов
 def show_students():
-    """Показать всех студентов."""
     if not students:
         print(MESSAGES["no_students"])
         return
@@ -43,8 +43,8 @@ def show_students():
         print(f"{name} | Возраст: {data['age']} | Оценки: {grades_str}")
 
 
+# Найти студента по имени
 def find_student():
-    """Найти студента по имени."""
     name = input(MESSAGES["input_search_name"]).strip()
     for student_name, data in students.items():
         if student_name.lower() == name.lower():
@@ -55,8 +55,8 @@ def find_student():
         print(MESSAGES["student_not_found"])
 
 
+# Удалить студента по имени
 def delete_student():
-    """Удалить студента по имени."""
     name = input(MESSAGES["input_delete_name"]).strip()
     if name in students:
         del students[name]
@@ -65,8 +65,8 @@ def delete_student():
         print(MESSAGES["student_not_found"])
 
 
+# Добавить новую оценку студенту
 def add_grade():
-    """Добавить новую оценку студенту."""
     name = input(MESSAGES["input_name"]).strip()
     if name not in students:
         print(MESSAGES["student_not_found"])
@@ -82,8 +82,8 @@ def add_grade():
         print(MESSAGES["error_not_number"])
 
 
+# Вывести список студентов старше определенного возраста
 def show_students_by_age():
-    """Вывести список студентов старше определенного возраста."""
     try:
         age_limit = int(input(MESSAGES["input_age_limit"]))
         found = False
@@ -98,8 +98,8 @@ def show_students_by_age():
         print(MESSAGES["error_not_number"])
 
 
+# Показать студентов с оценкой выше определенного порога
 def show_students_by_grade():
-    """Показать студентов с оценкой выше определенного порога."""
     try:
         grade_limit = int(input(MESSAGES["input_grade_limit"]))
         found = False
@@ -114,8 +114,8 @@ def show_students_by_grade():
         print(MESSAGES["error_not_number"])
 
 
+# Экспорт студентов в CSV-файл
 def export_to_csv():
-    """Экспорт студентов в CSV-файл."""
     filename = input(MESSAGES["input_export_filename"]).strip()
     try:
         with open(filename, mode="w", newline="", encoding="utf-8") as file:
@@ -131,8 +131,8 @@ def export_to_csv():
         print(MESSAGES["export_done"])
 
 
+# Импорт студентов из CSV-файла
 def import_from_csv():
-    """Импорт студентов из CSV-файла."""
     filename = input(MESSAGES["input_import_filename"]).strip()
     try:
         with open(filename, mode="r", encoding="utf-8") as file:
@@ -152,8 +152,8 @@ def import_from_csv():
         print(MESSAGES["import_done"])
 
 
+# Главное меню программы
 def main():
-    """Главное меню программы."""
     actions = {
         "1": add_student,
         "2": show_students,
