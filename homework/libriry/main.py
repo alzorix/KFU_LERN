@@ -105,3 +105,4 @@ print(sort_books_by_year())
 
 print("\nКниги, изданные между 1900 и 1970 годами:")
 print(binary_search( 1900, 1970))
+print(2 * 3 **2)
